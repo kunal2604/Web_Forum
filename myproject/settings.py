@@ -3,6 +3,9 @@ import os
 import dj_database_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+#Add ->
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+
 
 SECRET_KEY = config('SECRET_KEY')
 
@@ -87,11 +90,15 @@ USE_L10N = True
 
 USE_TZ = True
 
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
+'''STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
-]
+]'''
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_ROOT, 'static'),
+)
 
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'home'
